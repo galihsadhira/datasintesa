@@ -1,7 +1,5 @@
 import { Body, Controller, Get, Post, UseInterceptors, UploadedFile} from '@nestjs/common';
 import { AppService } from './app.service';
-import { map, toArray } from 'rxjs'; 
-import { Render } from '@nestjs/common';
 import {Data} from './models/data.schema'
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
@@ -21,6 +19,9 @@ export class AppController {
     })
   }))
   async inputData(@UploadedFile() file, @Body() dataDto: Data ) {
+
+    console.log(file, `<<<<file`);
+    
 
     return this.appService.parse(file)
   }

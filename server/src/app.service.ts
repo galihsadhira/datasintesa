@@ -14,7 +14,11 @@ export class AppService {
   ){}
 
   async parse(file: any) {
+    console.log(file, `<<<file`);
+    
     const stream = createReadStream(file.path)
+    console.log(stream, `<<<<stream`);
+    
     let entities = await this.csvParser.parse(stream, Data)
 
     entities.list.slice(1)
@@ -32,7 +36,7 @@ export class AppService {
 
       
       if (isNaN(availDur)) {
-        console.log(`therer's NaN`);
+        console.log(`there's NaN`);
         return `NaN`
       }
 
