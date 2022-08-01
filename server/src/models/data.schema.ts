@@ -1,18 +1,17 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from 'mongoose'
-import { IntegerType } from "mongodb";
 
 export type DataDocument = Data & Document;
 
 @Schema()
 export class Data {
-    @Prop({required:true, default: Date.now})
+    @Prop()
     resultTime: Date;
-    @Prop({required:true})
+    @Prop()
     enodebId: string;
-    @Prop({required:true})
+    @Prop()
     cellId: string;
-    @Prop({required:true})
+    @Prop()
     availDur: number;
 }
 export const DataSchema = SchemaFactory.createForClass(Data)

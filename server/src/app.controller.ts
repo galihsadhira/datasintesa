@@ -10,8 +10,8 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  showData(): string {
-    return `Check`
+  getGraph() {
+    return this.appService.getGraph()
   }
 
   @Post()
@@ -22,10 +22,6 @@ export class AppController {
   }))
   async inputData(@UploadedFile() file, @Body() dataDto: Data ) {
 
-    // console.log(dataDto,);
-    // console.log(file, `<<<<< controller`);
-    
-    // return this.appService.inputData(dataDto)
     return this.appService.parse(file)
   }
 }
